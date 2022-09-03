@@ -7,10 +7,10 @@
    type: linkedin
    icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
    url:  'https://www.linkedin.com/in/kim-younghun-6413611bb/'                  # Fill with your Linkedin homepage
-#-
-#   type: Instagram
-#   icon: 'fab fa-instagram'   # icons powered by <https://fontawesome.com/>
-#   url:  ''                  # Fill with your Linkedin homepage
+-
+   type: Instagram
+   icon: 'fab fa-instagram'   # icons powered by <https://fontawesome.com/>
+   url:  'https://www.instagram.com/dudgns466/'                  # Fill with your Linkedin homepage
 -
   type: twitter
   icon: 'fab fa-twitter'
