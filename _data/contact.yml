@@ -28,3 +28,7 @@
 #   type: stack-overflow
 #   icon: 'fab fa-stack-overflow'
 #   url:  ''                  # Fill with your stackoverflow homepage
+-
+   type: Instagram
+   icon: 'fab fa-instagram'   # icons powered by <https://fontawesome.com/>
+   url:  ''                  # Fill with your Linkedin homepage
