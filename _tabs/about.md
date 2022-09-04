@@ -31,7 +31,7 @@ Now I'm studying <strong>_<u>Data Science at SNU</u>_</strong>.
  - Samsung Electronics (2018.07 ~ )  
  -- Task Force in HR team  
  -- Circuit Designer   
- -- Online Busienss Sales Manager  
+ -- Online Business Sales Manager  
 
 ## Hobby
 - Playing Oboe
