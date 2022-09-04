@@ -1,3 +1,9 @@
+---
+title : Title
+categories : [TOP_CATEGORIE, SUB_CATEGORIE]
+tags : [TAG] #소문자만 가능
+---
+
 <!--
 ---
 layout: categories
@@ -7,8 +13,3 @@ icon: fas fa-stream
 order: 1
 ---
 -->
----
-title : Title
-categories : [TOP_CATEGORIE, SUB_CATEGORIE]
-tags : [TAG] <!--소문자만 가능-->
----
