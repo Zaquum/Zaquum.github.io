@@ -10,6 +10,5 @@ layout: categories
 title: Categories
 date : YYYY-MM-DD HH:MM:SS +/-TTTT
 icon: fas fa-stream
-order: 1
 ---
 -->

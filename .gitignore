@@ -8,6 +8,7 @@
 !.commitlintrc.json
 !.versionrc.json
 Gemfile.lock
+_posts/yyyy-mm-dd-form.md
 
 # bundler cache
 _site
