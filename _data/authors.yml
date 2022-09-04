@@ -1,10 +1,10 @@
 ## Template › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/advanced-usage.md#setting-author-url
--------------------------------------
-{author_id}:
-  name: Zaquum
+#-------------------------------------
+  Zaquum:
+  name: YoungHun Kim
 #   twitter: {twitter_of_author}
   url: Zaquum.github.io
--------------------------------------
+#-------------------------------------
 
 cotes:
   name: Cotes Chung
