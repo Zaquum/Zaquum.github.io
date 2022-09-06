@@ -26,7 +26,7 @@ title: Zaquum's Blog                          # the main title
 tagline: Data Scientist at SNU   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  Data, Data Science, AI, Big data, Samsung
+  Hello, Zaquum's World!
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://zaquum.github.io'
