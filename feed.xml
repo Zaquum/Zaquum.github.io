@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Zaquum&apos;s Blog</title>
+    <description>Hello, Zaquum&apos;s World!</description>
+    <link>https://zaquum.github.io/</link>
+    <atom:link href="https://zaquum.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 27 Nov 2022 02:45:24 +0900</pubDate>
+    <lastBuildDate>Sun, 27 Nov 2022 02:45:24 +0900</lastBuildDate>
+    <generator>Jekyll v4.3.1</generator>
+    
+      <item>
+        <title>Relational Model</title>
+        <description>&lt;!--
+---
+layout: categories
+title: Categories
+date : YYYY-MM-DD HH:MM:SS +/-TTTT
+icon: fas fa-stream
+---
+--&gt;
+
+&lt;h1 id=&quot;1-relational-model이란&quot;&gt;1. Relational Model이란?&lt;/h1&gt;
+&lt;p&gt;Relational model은 Relation을 통해 구성된 모델을 일컫는다.&lt;br /&gt;
+Relation은 &lt;strong&gt;&lt;u&gt;Table&lt;/u&gt;&lt;/strong&gt;과 &lt;strong&gt;&lt;u&gt;Schema&lt;/u&gt;&lt;/strong&gt;가 결합된 데이터구조이다.
+각 열마다 Name이 구체화된 표라고 생각하면 이해가 쉽다.&lt;/p&gt;
+
+&lt;h2 id=&quot;table&quot;&gt;Table&lt;/h2&gt;
+&lt;p&gt;Row(record, tuple)와 Column(Attribute, field)로 구성된 Instance를 지칭한다.&lt;br /&gt;
+흔히 말하는 ‘표’ 양식이라고 이해하면 된다.&lt;/p&gt;
+&lt;h2 id=&quot;schema&quot;&gt;Schema&lt;/h2&gt;
+&lt;p&gt;각 Column의 이름, Data Type, 그리고 Relation의 이름을 구체적으로 명시한 것을 의미한다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;e.g., Students(Sid: integer, Sname: varchar, Email: varchar, Did: integer, Gpa: real)&lt;br /&gt;
+&lt;strong&gt;&lt;center&gt;[Table and Schema]&lt;/center&gt;&lt;/strong&gt;
+&lt;img src=&quot;/assets/posts/01. Big data 1/02/table.jpg&quot; alt=&quot;table&quot; class=&quot;center&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;center&gt;[Relational model 예시]&lt;/center&gt;&lt;/strong&gt;
+&lt;img src=&quot;/assets/posts/01. Big data 1/02/Relational model.jpg&quot; alt=&quot;Relational model&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+&lt;h2 id=&quot;relational-model을-다루는-이유&quot;&gt;Relational Model을 다루는 이유&lt;/h2&gt;
+&lt;p&gt;Relational Model을 다루는 이유는 세계적으로 가장 많이 쓰이는 Model이기 때문이다.&lt;br /&gt;
+IBM, Microsoft, Oracle, SAP 등등 다양한 벤더들이 이 모델을 중용하고 있다.&lt;br /&gt;
+최근 경쟁 모델로 NoSQL, NewSQL 등이 있으나, 해당 내용은 추후 여력이 되면 다뤄보도록 하겠다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;center&gt;[Relational model 점유율]&lt;/center&gt;&lt;/strong&gt;
+&lt;img src=&quot;/assets/posts/01. Big data 1/02/Relational.jpg&quot; alt=&quot;Relational&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;2-integrity-constraints-ics&quot;&gt;2. Integrity Constraints (ICs)&lt;/h1&gt;
+&lt;p&gt;Intergrity(무결성)이란 데이터의 정확성, 일관성을 나타냅니다.&lt;br /&gt;
+데이터를 정확하고 일관되게 유지하는 것을 의미합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;ICs&lt;/strong&gt;는 이러한 DB의 정확성, 일관성을 보장하기 위해 제약하기 위한 조건을 뜻합니다.&lt;/p&gt;
+&lt;h2 id=&quot;1-entity-integrity-개체-무결성&quot;&gt;1) Entity Integrity (개체 무결성)&lt;/h2&gt;
+&lt;p&gt;모든 테이블은 &lt;strong&gt;Primary Key(기본 키)&lt;/strong&gt;로 선택된 Column 집합을 가져야 합니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;1-candidate-key&quot;&gt;(1) (Candidate) Key&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Relation을 구성하는 속성들 중 Tuple을 유일하게 식별할 수 있는 Column들의 부분집합&lt;/li&gt;
+  &lt;li&gt;유일성(Uniqueness)과 최소성(irreducibility)을 만족해야 한다.
+– &lt;strong&gt;Uniqueness&lt;/strong&gt; : 모든 레코드에서 &lt;u&gt;중복값&lt;/u&gt;이 없는 특성
+– &lt;strong&gt;Irreducibility&lt;/strong&gt; : 최소한의 필드로 레코드를 유일하게 구별할 수 있는 특성&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;2-primary-keypk---기본-키&quot;&gt;(2) Primary Key(PK) - 기본 키&lt;/h3&gt;
+&lt;p&gt;기본 키는 테이블에서 특정 레코드를 구별하기 위해 후보 키 중에서 선택한 고유 식별자이다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Key와 마찬가지로 &lt;strong&gt;Unique / Irreducibile&lt;/strong&gt;하며, &lt;strong&gt;NULL&lt;/strong&gt;값을 가질 수 없다.&lt;/li&gt;
+  &lt;li&gt;기본 키 채택 시에는 Simple하며 변동성이 적은 것, 즉 값이 자주 변경되지 않는 키로 지정하는 것이 좋다.
+    &lt;h4 id=&quot;pk-예시-1&quot;&gt;&lt;strong&gt;&lt;center&gt;[PK 예시 1]&lt;/center&gt;&lt;/strong&gt;&lt;/h4&gt;
+    &lt;p&gt;&lt;img src=&quot;/assets/posts/01. Big data 1/02/Primary1.jpg&quot; alt=&quot;Primary1&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;상기 테이블에서 Sid(Student ID)는 unique하지 않고 null 값을 가지기 때문에 PK가 될 수 없다.&lt;/p&gt;
+&lt;h4 id=&quot;pk-예시-2&quot;&gt;&lt;strong&gt;&lt;center&gt;[PK 예시 2]&lt;/center&gt;&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/posts/01. Big data 1/02/Primary2.jpg&quot; alt=&quot;Primary2&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위 테이블에서 Sid와 Cid의 set은 Unique/Irreducible하며 null값을 가지지 않기 때문에 PK로 지정될 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;3-super-key&quot;&gt;(3) Super Key&lt;/h3&gt;
+&lt;p&gt;슈퍼키는 테이블 필드들의 부분집합으로써, Uniqueness만을 만족한다. 슈퍼키 중 irreducible한 키들이 바로 Key이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;4-foreign-key-fk&quot;&gt;(4) Foreign Key (FK)&lt;/h3&gt;
+&lt;p&gt;외래키는 한 테이블의 키 중에서 타른 테이블의 레코드를 유일하게 식별 할 수 있는 키를 말한다. 다른 테이블 레코드를 참조하기 위한 키이기 때문에, 참조 테이블의 &lt;strong&gt;기본키(Primary key)&lt;/strong&gt;가 FK가 된다.&lt;/p&gt;
+
+&lt;h2 id=&quot;2-referential-integrity-참조-무결성&quot;&gt;2) Referential Integrity (참조 무결성)&lt;/h2&gt;
+&lt;p&gt;참조 무결성은 참조 대상이 존재하지 않는 외래키를 허용하지 않는 것을 일컫는다.&lt;br /&gt;
+즉Dangling Reference를 허용하지 않는다.&lt;br /&gt;
+아래 그림의 Did 중 502호는 참조 대상이 존재하지 않기 때문에 참조 무결성에 위배된다.
+ &lt;img src=&quot;/assets/posts/01. Big data 1/02/Foreign.jpg&quot; alt=&quot;Foreign&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;3-domain-intergrity-도메인-무결성&quot;&gt;3) Domain Intergrity (도메인 무결성)&lt;/h2&gt;
+&lt;p&gt;테이블에 존재하는 필드의 무결성을 보장하기 위한 것으로, Relational Database에 있는 모든 Comlumn들은 정의된 도메인(Data Type)에 따라 선언되어야 한다.&lt;br /&gt;
+예를 들어, 아래 그림과 같이 GPA 필드에 알파벳이 입력되는 경우 도메인 무결성 위반이다.
+ &lt;img src=&quot;/assets/posts/01. Big data 1/02/Domain.jpg&quot; alt=&quot;Domain&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;3-view&quot;&gt;3. View&lt;/h1&gt;
+&lt;p&gt;뷰는 다른 테이블을 기반으로 만들어진 가상의 테이블을 의미한다.&lt;br /&gt;
+뷰는 실제 Row를 저장하지 않고, 논리적인 정의를 저장합니다.
+가령 아래 예시와 같이 특정 조건 하의 row만을 띄우기도 합니다.&lt;br /&gt;
+&lt;strong&gt;&lt;center&gt;[View 예시]&lt;/center&gt;&lt;/strong&gt;
+&lt;img src=&quot;/assets/posts/01. Big data 1/02/View.jpg&quot; alt=&quot;View&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;뷰를 사용하여 불필요한 기본 정보들을 숨기며, 필요한 정보만을 표시할 수 있습니다.&lt;/p&gt;
+&lt;h1 id=&quot;4-relational-levels-of-abstraction&quot;&gt;4. Relational Levels of Abstraction&lt;/h1&gt;
+&lt;p&gt;DB에서부터 View까지는 아래 그림과 같이 추상화 단계를 정의할 수 있습니다.&lt;br /&gt;
+   &lt;img src=&quot;/assets/posts/01. Big data 1/02/View2.jpg&quot; alt=&quot;View2&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Physical Schema : 파일이나 사용되는 Index를 묘사합니다.&lt;br /&gt;
+   – e.g. 정리되지 않은 파일로 저장된 테이블, Student id Index&lt;/li&gt;
+  &lt;li&gt;Conceptual Scehma :  논리적인 구조를 정의합니다.&lt;br /&gt;
+   – e.g. Students(Sid: integer, Sname: varchar, Email: varchar, Did: integer, Gpa: real)&lt;/li&gt;
+  &lt;li&gt;Views : 사용자가 어떻게 데이터를 바라보는지 정의하는 단계로써 어플리케이션의 영역입니다.&lt;br /&gt;
+   – e.g. Student_gpq_view(Sid: integer, Gpa: real)
+    &lt;h2 id=&quot;data-independence&quot;&gt;Data Independence&lt;/h2&gt;
+    &lt;p&gt;데이터 독립성은 하위 단계의 데이터 구조가 변경되더라도 상위 단계에 영향을 미치지 않는 속성이다.&lt;br /&gt;
+데이터가 어떻게 구축되고 저장되는지는 어플리케이션에 아무런 영향을 미치지 않는 성질이다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Logical data independence&lt;br /&gt;
+– external view나 응용프로그램을 변화시키지 않고 Conceptual Schema를 변경하는 성질이다.&lt;br /&gt;
+– e.g. 이미 존재하는 응용프로그램을 변경하지 않고 Column 등을 추가/수정/삭제할 수 있다.&lt;/li&gt;
+  &lt;li&gt;Physical data Independence&lt;br /&gt;
+– internal/physical level로부터 Conceptual level을 분리시키는 성질이다. Logical data independence보다 더욱 달성하기 어려운 성질이다.&lt;br /&gt;
+– e.g. HDD에서 SDD로 저장 매체로 변경&lt;br /&gt;
+– e.g. 데이터 압축 기술 변경&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;[Caution]&lt;/strong&gt;&lt;br /&gt;
+상기 내용은 서울대학교 데이터사이언스 강의에 근거하며,&lt;br /&gt;
+무단 복제 및 스크랩을 금지합니다.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 08 Sep 2022 00:00:00 +0900</pubDate>
+        <link>https://zaquum.github.io/posts/BigData_02/</link>
+        <guid isPermaLink="true">https://zaquum.github.io/posts/BigData_02/</guid>
+        
+        <category>big data</category>
+        
+        <category>db</category>
+        
+        <category>dbms</category>
+        
+        <category>database</category>
+        
+        <category>Relational</category>
+        
+        <category>Relational model</category>
+        
+        
+        <category>Data Science</category>
+        
+        <category>Big data</category>
+        
+      </item>
+    
+      <item>
+        <title>DB / DBMS</title>
+        <description>&lt;!--
+---
+layout: categories
+title: Categories
+date : YYYY-MM-DD HH:MM:SS +/-TTTT
+icon: fas fa-stream
+---
+--&gt;
+
+&lt;h1 id=&quot;1-data란&quot;&gt;1. Data란?&lt;/h1&gt;
+
+&lt;p&gt;정보를 전달하는 value들의 집합&lt;/p&gt;
+
+&lt;h2 id=&quot;data-model&quot;&gt;Data model&lt;/h2&gt;
+
+&lt;p&gt;Data의 관계, 접근과 그 흐름에 필요한 처리 과정에 관한 추상화된 모형이다.
+High-level data description의 집합으로써 목적에 따라 다른 data model을 가진다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;[Data model 예시]&lt;/strong&gt;&lt;br /&gt;
+&lt;img src=&quot;/assets/posts/01. Big data 1/01/Data model.jpg&quot; alt=&quot;Data model&quot; width=&quot;90%&quot; height=&quot;90%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이후 포스팅에서는 가장 대중적으로 많이 쓰이는 Relational model에 대해 집중적으로 다룰 예정입니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;2-databasedb&quot;&gt;2. Database(DB)&lt;/h1&gt;
+
+&lt;p&gt;전자적으로 저장되고 액세스되는 데이터의 조직화된 모음&lt;br /&gt;
+&lt;strong&gt;Database Management System(DBMS)&lt;/strong&gt;은 데이터베이스를 유지하고 활용하기 위해 디자인된 소프트웨어를 일컫는다.&lt;br /&gt;
+그러나 DB는 종종 DBMS를 지칭하기도 한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;dbms를-사용하는-이유&quot;&gt;DBMS를 사용하는 이유&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;데이터의 논리적 물리적 독립성이 보장된다.&lt;/li&gt;
+  &lt;li&gt;데이터를 통합 관리하기 때문에 중복을 피할 수 있다.&lt;/li&gt;
+  &lt;li&gt;여러 유저가 접근 및 제어하여 병행성을 보장한다.&lt;/li&gt;
+  &lt;li&gt;데이터의 일관성 및 무결성을 유지할 수 있다.&lt;/li&gt;
+  &lt;li&gt;데이터 보안을 유지할 수 있다.&lt;/li&gt;
+  &lt;li&gt;데이터 제어를 통해 표준화 할 수 있다.&lt;/li&gt;
+  &lt;li&gt;데이터를 통합하여 관리할 수 있다.&lt;/li&gt;
+  &lt;li&gt;데이터의 실시간 처리가 가능하다.&lt;/li&gt;
+  &lt;li&gt;에러로부터 데이터베이스 회복이 가능하다.&lt;/li&gt;
+  &lt;li&gt;Application 개발이 용이하다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;3-transanction-and-query&quot;&gt;3. Transanction and Query&lt;/h1&gt;
+
+&lt;h2 id=&quot;transaction이란&quot;&gt;Transaction이란?&lt;/h2&gt;
+&lt;p&gt;Transaction은 DB에 대해서 DBMS로 이루어지는 일종의 작업 단위를 상징한다.&lt;br /&gt;
+즉 DB에 어떠한 변화를 주는 것을 의미한다.&lt;br /&gt;
+Transaction에는 4가지 특성이 있는데 이를 ACID라고 한다.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;원자성 (Atomicity)
+    &lt;ul&gt;
+      &lt;li&gt;작업이 부분적으로 실행되거나 중단하지 않는다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;일관성 (Consistency)
+    &lt;ul&gt;
+      &lt;li&gt;Transaction 성공 시 일관적일 DB상태를 유지한다.&lt;/li&gt;
+      &lt;li&gt;e.g. 계좌 입출금 후에도 자료 형은 Integer로 유지&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;격리성 (Isolation)
+    &lt;ul&gt;
+      &lt;li&gt;Transaction은 서로 간섭할 수 없다.&lt;/li&gt;
+      &lt;li&gt;Transaciton 충돌을 방지하기 위함으로 하나의 Transaction이 다른 Transaction에 간섭할 수 없다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;지속성 (Durability)
+    &lt;ul&gt;
+      &lt;li&gt;Transaction 성공 시, 즉 commit을 하면 현재 상태를 영원히 보존한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;query란&quot;&gt;Query란?&lt;/h2&gt;
+&lt;p&gt;이에 반해 Query는 DB에 대한 정보 검색을 위한 사용자의 요청입니다.&lt;br /&gt;
+아래의 구체적인 예시를 통해 Transaciton과 Query에 대한 개념을 더욱 구체화해봅시다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;[Transaction and Query]&lt;/strong&gt;&lt;br /&gt;
+&lt;img src=&quot;/assets/posts/01. Big data 1/01/Transaction and query.jpg&quot; alt=&quot;Transaction and Query&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다음 포스팅에서는 앞서 말한 Relational Model에 대해 더욱 다룰 예정입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;[Caution]&lt;/strong&gt;
+상기 내용은 서울대학교 데이터사이언스 강의에 근거하며,&lt;br /&gt;
+무단 복제 및 스크랩을 금지합니다.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 08 Sep 2022 00:00:00 +0900</pubDate>
+        <link>https://zaquum.github.io/posts/BigData_01/</link>
+        <guid isPermaLink="true">https://zaquum.github.io/posts/BigData_01/</guid>
+        
+        <category>big data</category>
+        
+        <category>db</category>
+        
+        <category>dbms</category>
+        
+        <category>database</category>
+        
+        <category>Transaction</category>
+        
+        <category>Query</category>
+        
+        
+        <category>Data Science</category>
+        
+        <category>Big data</category>
+        
+      </item>
+    
+      <item>
+        <title>Zaquum의 첫 글</title>
+        <description>&lt;p&gt;안녕하세요, Zaquum입니다.&lt;/p&gt;
+
+&lt;p&gt;이 블로그는 배움을 복습하고,&lt;br /&gt;
+많은 분들에게 공유드리기 위한 공간입니다.&lt;/p&gt;
+
+&lt;p&gt;저는 현재 서울대학교에서 데이터사이언티스트가 되기 위한 공부를 하고 있습니다.&lt;br /&gt;
+공유드릴 Contents는 데이터 사이언스에 관련된 기초 내용이며,&lt;br /&gt;
+크게 3가지(&lt;u&gt;A/B/C&lt;/u&gt;)로 나뉠 예정입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/ABC.jpg&quot; alt=&quot;ABC&quot; width=&quot;75%&quot; height=&quot;75%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;1. AI&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;2. Big Data&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;3. Computing&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;이 외 개인적으로 관심 있는 &lt;strong&gt;논문&lt;/strong&gt; 및 &lt;strong&gt;트렌드&lt;/strong&gt; 또한 공유할 예정입니다.&lt;/p&gt;
+
+&lt;p&gt;소개드릴 ABC 게시물은 &lt;u&gt;서울대학교 데이터사이언스대학원&lt;/u&gt; 강의에 근거하며,&lt;br /&gt;
+무단 복제 및 스크랩을 금지합니다.&lt;/p&gt;
+
+&lt;p&gt;Best Regards,&lt;br /&gt;
+Zaquum.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 05 Sep 2022 00:00:00 +0900</pubDate>
+        <link>https://zaquum.github.io/posts/%EC%B2%AB_%EA%B8%80/</link>
+        <guid isPermaLink="true">https://zaquum.github.io/posts/%EC%B2%AB_%EA%B8%80/</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
